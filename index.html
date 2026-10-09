@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101828">
+  <meta name="description" content="Discover useful tech, home and everyday finds at TechVinch. Browse product picks and shop through Amazon.">
+  <title>TechVinch — Smart Finds for Everyday Life</title>
+  <style>
+    :root{--ink:#101828;--muted:#667085;--line:#eaecf0;--bg:#f7f8fb;--brand:#6d4aff;--brand2:#8b5cf6;--accent:#ffcf5a;--white:#fff;--radius:18px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}
+    .topbar{background:#101828;color:#fff;text-align:center;padding:8px 12px;font-size:12px;letter-spacing:.2px}
+    header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line)}
+    .head{max-width:1160px;margin:auto;padding:13px 16px;display:flex;align-items:center;gap:12px}
+    .logo{font-weight:900;font-size:23px;letter-spacing:-1px;white-space:nowrap}.logo span{color:var(--brand)}
+    .search{display:flex;flex:1;min-width:0;background:#f2f4f7;border:1px solid #eaecf0;border-radius:13px;overflow:hidden}
+    .search input{width:100%;min-width:0;border:0;outline:0;background:transparent;padding:12px 13px}
+    .search button{border:0;background:var(--brand);color:#fff;padding:0 15px;font-weight:700}
+    .head-link{font-size:13px;font-weight:750;white-space:nowrap}
+    .wrap{max-width:1160px;margin:auto;padding:18px 16px 90px}
+    .hero{overflow:hidden;position:relative;border-radius:26px;padding:32px 24px;background:linear-gradient(125deg,#21184b,#4e36b5 58%,#a78bfa);color:#fff;display:grid;grid-template-columns:1.2fr .8fr;gap:16px;align-items:center;min-height:255px}
+    .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:850;color:#ffdf8b}
+    h1{font-size:clamp(30px,5vw,52px);line-height:1.04;letter-spacing:-1.6px;margin:10px 0 12px;max-width:570px}
+    .hero p{color:#e8e5ff;max-width:510px;margin:0 0 22px}
+    .primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--accent);color:#201b12;border:0;border-radius:12px;padding:12px 17px;font-weight:850}
+    .hero-art{font-size:clamp(78px,13vw,142px);text-align:center;filter:drop-shadow(0 15px 15px #17103d55);transform:rotate(-5deg)}
+    .trust{display:flex;gap:9px;flex-wrap:wrap;margin:15px 0 26px}
+    .trust span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:#475467;font-size:12px;font-weight:700}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:27px 0 14px}
+    h2{font-size:22px;letter-spacing:-.5px;margin:0}.sub{color:var(--muted);font-size:13px;margin-top:3px}
+    .categories{display:flex;gap:9px;overflow:auto;padding:2px 0 7px;scrollbar-width:thin}
+    .chip{border:1px solid #e4e7ec;background:#fff;border-radius:999px;padding:9px 14px;white-space:nowrap;font-weight:750;color:#344054}
+    .chip.active{background:#20184b;color:#fff;border-color:#20184b}
+    .tools{display:flex;gap:8px;align-items:center}.tools select{border:1px solid #e4e7ec;background:#fff;border-radius:10px;padding:9px;max-width:145px}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .15s,box-shadow .15s}
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 26px #1018280d}
+    .product-art{height:155px;display:flex;align-items:center;justify-content:center;font-size:64px;background:linear-gradient(140deg,#f0edff,#f8f7ff);position:relative}
+    .tag{position:absolute;top:10px;left:10px;border-radius:999px;background:#fff;padding:5px 8px;font-size:10px;font-weight:850;color:#5b43d6}
+    .card-body{padding:12px;display:flex;flex-direction:column;gap:7px;flex:1}
+    .category{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:850}
+    .card h3{font-size:14px;line-height:1.35;margin:0;min-height:38px}
+    .price{font-size:15px;font-weight:900}.demo{font-size:10px;color:#b54708;font-weight:700}
+    .amazon{margin-top:auto;border:0;border-radius:10px;background:#ffd66b;color:#251d0b;padding:10px 8px;font-size:12px;font-weight:900;text-align:center}
+    .empty{grid-column:1/-1;background:#fff;border:1px dashed #d0d5dd;border-radius:16px;text-align:center;padding:35px;color:var(--muted)}
+    .disclosure{background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px;color:#667085;font-size:12px;margin-top:25px}
+    footer{background:#101828;color:#e4e7ec;padding:28px 16px 85px}
+    .foot-inner{max-width:1160px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px}
+    footer p{color:#98a2b3;font-size:13px;max-width:440px}footer a{font-size:13px;color:#d0d5dd;margin-right:14px}
+    .mobile-nav{display:none}
+    .notice{display:none;position:fixed;bottom:74px;left:12px;right:12px;background:#101828;color:#fff;padding:12px 14px;border-radius:12px;z-index:40;font-size:13px}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.head-link{display:none}.hero{grid-template-columns:1fr .55fr;padding:25px 20px}.product-art{height:135px}}
+    @media(max-width:600px){.topbar{font-size:11px}.head{padding:11px 12px;gap:9px;flex-wrap:wrap}.logo{font-size:21px}.search{order:3;flex-basis:100%}.wrap{padding:14px 12px 105px}.hero{grid-template-columns:1fr;padding:24px 19px;min-height:0;border-radius:20px}.hero-art{display:none}h1{font-size:35px}.hero p{font-size:14px}.trust{margin:12px 0 22px}.section-head{align-items:start;flex-direction:column}.tools{width:100%;justify-content:space-between}.tools select{flex:1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-art{height:125px;font-size:53px}.card-body{padding:10px;gap:6px}.card h3{font-size:13px}.price{font-size:14px}.amazon{font-size:11px}.mobile-nav{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:9px 8px calc(9px + env(safe-area-inset-bottom));justify-content:space-around}.mobile-nav a{font-size:11px;font-weight:800;color:#667085;text-align:center}.mobile-nav b{display:block;font-size:19px;color:var(--brand);line-height:1.3}footer{padding-bottom:100px}}
+  </style>
+</head>
+<body>
+  <div class="topbar">✨ Smart finds for everyday life · Shop through trusted Amazon links</div>
+  <header>
+    <div class="head">
+      <a class="logo" href="#" aria-label="TechVinch home">Tech<span>Vinch</span>.</a>
+      <form class="search" id="searchForm" role="search">
+        <input id="searchInput" type="search" placeholder="Search gadgets, home finds..." aria-label="Search products">
+        <button type="submit" aria-label="Search">⌕</button>
+      </form>
+      <a class="head-link" href="#products">Explore picks ↓</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Curated finds. Smarter choices.</div>
+        <h1>Little upgrades.<br>Big everyday wins.</h1>
+        <p>Discover useful tech, clever home essentials and products worth checking out — all in one simple place.</p>
+        <a class="primary" href="#products">Explore product picks <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">🛍️</div>
+    </section>
+
+    <div class="trust" aria-label="Store information">
+      <span>⚡ Mobile-friendly</span><span>🔎 Easy product search</span><span>🛒 Checkout on Amazon</span>
+    </div>
+
+    <section aria-labelledby="categoriesTitle">
+      <div class="section-head"><div><h2 id="categoriesTitle">Browse categories</h2><div class="sub">Find something useful for your day</div></div></div>
+      <div class="categories" id="categories">
+        <button class="chip active" data-category="All">✨ All picks</button>
+        <button class="chip" data-category="Tech">📱 Tech</button>
+        <button class="chip" data-category="Home">🏠 Home</button>
+        <button class="chip" data-category="Cleaning">🧹 Cleaning</button>
+        <button class="chip" data-category="Accessories">🎧 Accessories</button>
+      </div>
+    </section>
+
+    <section id="products" aria-labelledby="productsTitle">
+      <div class="section-head">
+        <div><h2 id="productsTitle">Popular picks</h2><div class="sub" id="resultCount">Explore our product selection</div></div>
+        <div class="tools"><select id="sortSelect" aria-label="Sort products"><option value="featured">Featured</option><option value="name">Name A–Z</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option></select></div>
+      </div>
+      <div class="grid" id="productGrid" aria-live="polite"></div>
+    </section>
+
+    <aside class="disclosure" id="disclosure">
+      <strong>Affiliate disclosure:</strong> TechVinch may earn a commission from qualifying purchases made through links to Amazon, at no additional cost to you. Product prices and availability can change; check the current details on Amazon before buying. Sample products and prices on this starter website are placeholders and must be replaced before launch.
+    </aside>
+  </main>
+
+  <footer>
+    <div class="foot-inner">
+      <div><a class="logo" href="#" style="color:#fff">Tech<span>Vinch</span>.</a><p>Useful product discoveries for tech lovers and everyday life. TechVinch is an independent affiliate discovery website, not Amazon.</p></div>
+      <div><strong>Information</strong><p><a href="#disclosure">Affiliate disclosure</a><a href="mailto:hello@techvinch.in">Contact</a></p><p>© <span id="year"></span> TechVinch. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="Quick navigation">
+    <a href="#"><b>⌂</b>Home</a><a href="#categories"><b>▦</b>Categories</a><a href="#products"><b>⌕</b>Search picks</a><a href="#disclosure"><b>ⓘ</b>Info</a>
+  </nav>
+  <div class="notice" id="notice" role="status"></div>
+
+  <script>
+    /*
+      BEFORE LAUNCH:
+      1. Replace sample products below with products you want to feature.
+      2. Put your own Amazon Associates tagged URL in each `url`.
+      3. Replace sample prices with verified current prices or remove them.
+      4. Do not use this starter's sample prices as live offers.
+    */
+    const products = [
+      {id:1,name:"Cordless Electric Cleaning Brush",category:"Cleaning",price:799,emoji:"🧹",tag:"Home helper",url:"https://www.amazon.in/"},
+      {id:2,name:"Compact Bluetooth Speaker",category:"Tech",price:1299,emoji:"🔊",tag:"Tech pick",url:"https://www.amazon.in/"},
+      {id:3,name:"Multi-Port Fast Charging Adapter",category:"Accessories",price:699,emoji:"🔌",tag:"Everyday tech",url:"https://www.amazon.in/"},
+      {id:4,name:"Smart LED Desk Lamp",category:"Home",price:999,emoji:"💡",tag:"Desk upgrade",url:"https://www.amazon.in/"},
+      {id:5,name:"Wireless Earbuds",category:"Tech",price:1499,emoji:"🎧",tag:"On the go",url:"https://www.amazon.in/"},
+      {id:6,name:"Portable Mini Vacuum Cleaner",category:"Cleaning",price:1099,emoji:"🧽",tag:"Quick clean",url:"https://www.amazon.in/"},
+      {id:7,name:"Adjustable Mobile Stand",category:"Accessories",price:299,emoji:"📱",tag:"Useful accessory",url:"https://www.amazon.in/"},
+      {id:8,name:"Reusable Storage Organiser",category:"Home",price:449,emoji:"🧺",tag:"Home essential",url:"https://www.amazon.in/"}
+    ];
+    let category = "All";
+    let query = "";
+    const grid = document.getElementById("productGrid");
+    const count = document.getElementById("resultCount");
+    const sort = document.getElementById("sortSelect");
+    const rupees = n => "₹" + Number(n).toLocaleString("en-IN");
+
+    function render(){
+      let list = products.filter(p => (category === "All" || p.category === category) &&
+        (p.name.toLowerCase().includes(query) || p.category.toLowerCase().includes(query)));
+      if(sort.value === "name") list.sort((a,b)=>a.name.localeCompare(b.name));
+      if(sort.value === "price-low") list.sort((a,b)=>a.price-b.price);
+      if(sort.value === "price-high") list.sort((a,b)=>b.price-a.price);
+      count.textContent = `${list.length} sample product${list.length===1?"":"s"} · Demo data`;
+      if(!list.length){grid.innerHTML='<div class="empty">No products found. Try another search or category.</div>';return;}
+      grid.innerHTML = list.map(p => `
+        <article class="card">
+          <div class="product-art" aria-label="${p.name} illustration"><span class="tag">${p.tag}</span><span aria-hidden="true">${p.emoji}</span></div>
+          <div class="card-body">
+            <div class="category">${p.category}</div>
+            <h3>${p.name}</h3>
+            <div class="price">${rupees(p.price)}</div>
+            <div class="demo">Sample price — verify on Amazon</div>
+            <a class="amazon" href="${p.url}" target="_blank" rel="sponsored nofollow noopener" data-id="${p.id}">View on Amazon ↗</a>
+          </div>
+        </article>`).join("");
+    }
+    document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();query=document.getElementById("searchInput").value.trim().toLowerCase();render();document.getElementById("products").scrollIntoView({behavior:"smooth"});});
+    document.getElementById("searchInput").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();render();});
+    document.getElementById("categories").addEventListener("click",e=>{const b=e.target.closest("button[data-category]");if(!b)return;category=b.dataset.category;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));render();});
+    sort.addEventListener("change",render);
+    grid.addEventListener("click",e=>{const a=e.target.closest("a[data-id]");if(!a)return;const p=products.find(x=>x.id===Number(a.dataset.id));if(p.url==="https://www.amazon.in/"){e.preventDefault();const n=document.getElementById("notice");n.textContent="Demo link: add the real Amazon product URL and your Associates tracking tag before launch.";n.style.display="block";setTimeout(()=>n.style.display="none",4200);}});
+    document.getElementById("year").textContent=new Date().getFullYear();
+    render();
+  </script>
+</body>
+</html>
