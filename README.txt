@@ -1,3 +1,10 @@
-TechVinch self-contained deployment
+TechVinch website update
 
-This version embeds the mop product photos inside index.html, so the images will work even if you upload only index.html to GitHub/Cloudflare Pages. Keep the HTML at the root as index.html. Price: ₹470.
+Features added:
+- Product card click opens a dedicated product details view (URL hash #product-ID).
+- Swipeable product image gallery with thumbnail selector and previous/next controls.
+- Product description and highlights.
+- Buy on Amazon button.
+- Browser back and in-page back navigation.
+
+Deploy: replace the existing root index.html in your GitHub Pages/Cloudflare Pages project with this index.html and commit. This file is self-contained; the mop photos are embedded in the HTML.

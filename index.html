@@ -48,6 +48,20 @@
     footer{background:#101828;color:#e4e7ec;padding:28px 16px 85px}
     .foot-inner{max-width:1160px;margin:auto;display:flex;flex-wrap:wrap;justify-content:space-between;gap:22px}
     footer p{color:#98a2b3;font-size:13px;max-width:440px}footer a{font-size:13px;color:#d0d5dd;margin-right:14px}
+
+    .card{cursor:pointer}.card .amazon{position:relative;z-index:2}.card h3{cursor:pointer}
+    .product-detail{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(14px,3vw,28px);margin:18px 0 26px}
+    .detail-back{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 13px;font-weight:800;color:var(--ink);margin-bottom:18px}
+    .detail-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(18px,4vw,42px);align-items:start}
+    .detail-gallery{min-width:0}.detail-stage{position:relative;background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden}
+    .detail-slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;overscroll-behavior-x:contain;scrollbar-width:none;touch-action:pan-x pan-y}
+    .detail-slides::-webkit-scrollbar{display:none}.detail-slide{flex:0 0 100%;width:100%;height:clamp(280px,42vw,520px);object-fit:contain;scroll-snap-align:center;background:#fff;padding:10px}
+    .slide-nav{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border:1px solid #e4e7ec;background:#ffffffed;border-radius:50%;font-size:24px;line-height:1;display:grid;place-items:center;box-shadow:0 3px 12px #10182816}.slide-prev{left:10px}.slide-next{right:10px}
+    .detail-thumbs{display:flex;gap:8px;overflow-x:auto;padding:10px 1px 4px;scrollbar-width:thin}.detail-thumb{flex:0 0 68px;width:68px;height:68px;object-fit:contain;background:#fff;border:2px solid var(--line);border-radius:10px;padding:3px}.detail-thumb.active{border-color:var(--brand)}
+    .detail-info .category{font-size:12px}.detail-info h1{font-size:clamp(25px,3vw,38px);letter-spacing:-.3px;line-height:1.2;margin:8px 0 14px;color:var(--ink);max-width:none}.detail-price{font-size:29px;font-weight:900;margin:8px 0 2px}.detail-price-note{color:#b54708;font-size:13px;font-weight:750}.detail-description{color:#475467;line-height:1.7;margin:18px 0}.detail-info h2{font-size:18px;margin:18px 0 8px}.detail-features{padding-left:20px;color:#344054}.detail-features li{margin:7px 0}.detail-buy{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.detail-buy .amazon{font-size:15px;padding:14px 20px;flex:1;min-width:180px}.detail-disclaimer{font-size:12px;color:var(--muted);margin-top:12px}
+    [hidden]{display:none!important}
+    @media(max-width:650px){.detail-layout{grid-template-columns:1fr;gap:20px}.detail-slide{height:clamp(270px,82vw,420px)}.detail-thumb{flex-basis:60px;width:60px;height:60px}.detail-info h1{font-size:27px}.detail-price{font-size:26px}.product-detail{padding:13px;border-radius:17px}}
+
     .mobile-nav{display:none}
     .notice{display:none;position:fixed;bottom:74px;left:12px;right:12px;background:#101828;color:#fff;padding:12px 14px;border-radius:12px;z-index:40;font-size:13px}
     @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.head-link{display:none}.hero{grid-template-columns:1fr .55fr;padding:25px 20px}.product-art{height:135px}.product-photo{height:200px}}
@@ -100,6 +114,8 @@
       <div class="grid" id="productGrid" aria-live="polite"></div>
     </section>
 
+    <section class="product-detail" id="productDetail" hidden aria-live="polite"></section>
+
     <aside class="disclosure" id="disclosure">
       <strong>Affiliate disclosure:</strong> TechVinch may earn a commission from qualifying purchases made through links to Amazon, at no additional cost to you. Product prices and availability can change; check the current details on Amazon before buying. Sample products and prices on this starter website are placeholders and must be replaced before launch.
     </aside>
@@ -135,6 +151,20 @@
       {id:7,name:"Adjustable Mobile Stand",category:"Accessories",price:299,tag:"Useful accessory",url:"https://www.amazon.in/"},
       {id:8,name:"Reusable Storage Organiser",category:"Home",price:449,tag:"Home essential",url:"https://www.amazon.in/"}
     ];
+    const productDetails = {
+      1: {
+        description: "A triangular flat mop designed to reach corners and narrow spaces around the home. The rotating head helps change cleaning angles, while the long handle lets you clean floors and other reachable surfaces without bending as much.",
+        features: ["360° rotating triangular mop head for corners and tight spaces", "Microfiber flat mop design for wet or dry cleaning", "Push-pull squeeze mechanism shown in the product photos", "Cleaning cloth can be removed and replaced, as shown in the listing images"],
+        note: "Please check the Amazon listing for the latest price, included accessories, size and care instructions."
+      },
+      2: {description:"A compact Bluetooth speaker pick for everyday listening. Check the linked seller listing for the exact model, battery life, connectivity details and included accessories.",features:["Compact, portable speaker format","Confirm Bluetooth version and battery details on the seller listing","Compare current price and availability before buying"],note:"Product details should be verified on Amazon before purchase."},
+      3: {description:"A multi-port charging adapter pick for powering everyday devices. Check the product listing to confirm compatible devices, port types and supported charging speeds.",features:["Multiple charging ports","Check total output and port-by-port power ratings","Confirm plug type and device compatibility before purchase"],note:"Product details should be verified on Amazon before purchase."},
+      4: {description:"A desk lamp pick for a home office, study area or bedside table. Review the seller listing for brightness settings, colour temperature, power source and controls.",features:["Designed for desk or bedside use","Check brightness and colour settings on the listing","Confirm power source and dimensions before purchase"],note:"Product details should be verified on Amazon before purchase."},
+      5: {description:"A wireless earbuds pick for listening on the go. Check the exact listing for sound features, microphone quality, battery life and device compatibility.",features:["Wireless listening format","Check case and earbud battery life","Confirm supported features and compatibility on Amazon"],note:"Product details should be verified on Amazon before purchase."},
+      6: {description:"A portable mini vacuum cleaner pick for small clean-up tasks. Check the seller listing for suction specifications, charging method, attachments and recommended use.",features:["Compact format for small clean-up tasks","Review included nozzles or attachments","Check charging and runtime details before buying"],note:"Product details should be verified on Amazon before purchase."},
+      7: {description:"An adjustable mobile stand pick for desk use or hands-free viewing. Check the listing for supported phone sizes, angle adjustment and material details.",features:["Adjustable viewing angle","Confirm phone size compatibility","Check folded dimensions and build material on Amazon"],note:"Product details should be verified on Amazon before purchase."},
+      8: {description:"A reusable storage organiser pick for keeping everyday items together. Check the listing for dimensions, material and care instructions to ensure it fits your space.",features:["Reusable home storage option","Check dimensions before ordering","Review material and cleaning instructions on Amazon"],note:"Product details should be verified on Amazon before purchase."}
+    };
     let category = "All";
     let query = "";
     const grid = document.getElementById("productGrid");
@@ -151,13 +181,13 @@
       count.textContent = `${list.length} product${list.length===1?"":"s"} · Curated picks`;
       if(!list.length){grid.innerHTML='<div class="empty">No products found. Try another search or category.</div>';return;}
       grid.innerHTML = list.map(p => `
-        <article class="card">
-          <div class="product-art ${p.image ? "product-photo" : ""}" aria-label="${p.name} image">
+        <article class="card" data-open-product="${p.id}" tabindex="0" aria-label="View details for ${p.name}">
+          <div class="product-art ${p.image ? "product-photo" : ""}" data-open-product="${p.id}" aria-label="${p.name} image">
             ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : ""}
             <span class="tag">${p.tag}</span>
           </div>
-          ${p.gallery ? `<div class="product-gallery" aria-label="${p.name} more photos">${p.gallery.slice(0,4).map(src=>`<img src="${src}" alt="${p.name} alternate view" loading="lazy">`).join("")}</div>` : ""}
-          <div class="card-body">
+          ${p.gallery ? `<div class="product-gallery" data-open-product="${p.id}" aria-label="${p.name} more photos">${p.gallery.slice(0,4).map(src=>`<img src="${src}" alt="${p.name} alternate view" loading="lazy">`).join("")}</div>` : ""}
+          <div class="card-body" data-open-product="${p.id}">
             <div class="category">${p.category}</div>
             <h3>${p.name}</h3>
             ${p.price ? `<div class="price">${rupees(p.price)}</div><div class="demo">${p.id===1 ? "Price may change on Amazon" : "Sample price — verify on Amazon"}</div>` : `<div class="demo">${p.id===1 ? "Check current price and availability on Amazon" : "View product details on Amazon"}</div>`}
@@ -165,6 +195,35 @@
           </div>
         </article>`).join("");
     }
+    const detailSection = document.getElementById("productDetail");
+    const listingParts = [document.querySelector(".hero"), document.querySelector(".trust"), document.querySelector('section[aria-labelledby="categoriesTitle"]'), document.getElementById("products"), document.getElementById("disclosure")];
+    function showListing(){ listingParts.forEach(el=>{if(el)el.hidden=false;}); detailSection.hidden=true; detailSection.innerHTML=""; }
+    function showProduct(id, updateUrl=true){
+      const p=products.find(x=>x.id===Number(id)); if(!p){showListing();return;}
+      if(updateUrl) history.pushState({productId:p.id},"",`#product-${p.id}`);
+      listingParts.forEach(el=>{if(el)el.hidden=true;});
+      const d=productDetails[p.id]||{description:"Review the linked Amazon listing for full product details and compatibility information.",features:["Check the latest specifications on Amazon","Confirm size, compatibility and included accessories before purchase"],note:"Product details and availability may change."};
+      const images=[...(p.image?[p.image]:[]),...(p.gallery||[])];
+      const gallery=images.length?`<div class="detail-gallery"><div class="detail-stage"><div class="detail-slides" id="detailSlides">${images.map((src,i)=>`<img class="detail-slide" src="${src}" alt="${p.name} photo ${i+1}" loading="${i===0?'eager':'lazy'}">`).join("")}</div>${images.length>1?`<button class="slide-nav slide-prev" id="slidePrev" aria-label="Previous image">‹</button><button class="slide-nav slide-next" id="slideNext" aria-label="Next image">›</button>`:""}</div>${images.length>1?`<div class="detail-thumbs">${images.map((src,i)=>`<button class="detail-thumb-button" data-slide="${i}" aria-label="Show image ${i+1}" style="border:0;background:none;padding:0"><img class="detail-thumb ${i===0?'active':''}" src="${src}" alt="Thumbnail ${i+1}"></button>`).join("")}</div><div class="sub" id="slideCount">1 / ${images.length} photos · Swipe to view</div>`:""}</div>`:`<div class="detail-gallery"><div class="product-art" style="height:320px;border-radius:16px"></div></div>`;
+      const price=p.price?`<div class="detail-price">${rupees(p.price)}</div><div class="detail-price-note">${p.id===1?"Price may change on Amazon":"Sample price — verify on Amazon"}</div>`:`<div class="detail-price">Check price on Amazon</div>`;
+      detailSection.innerHTML=`<button type="button" class="detail-back" id="detailBack">← Back to products</button><div class="detail-layout">${gallery}<div class="detail-info"><div class="category">${p.category}</div><h1>${p.name}</h1>${price}<p class="detail-description">${d.description}</p><h2>Product highlights</h2><ul class="detail-features">${d.features.map(f=>`<li>${f}</li>`).join("")}</ul><div class="detail-buy"><a class="amazon" href="${p.url}" target="_blank" rel="sponsored nofollow noopener">Buy on Amazon ↗</a></div><p class="detail-disclaimer">${d.note} TechVinch may earn a commission from qualifying purchases, at no additional cost to you.</p></div></div>`;
+      detailSection.hidden=false; window.scrollTo({top:0,behavior:"smooth"});
+      document.getElementById("detailBack").addEventListener("click",()=>{location.hash="#products";});
+      const slides=document.getElementById("detailSlides");
+      if(slides && images.length>1){
+        let current=0;
+        const thumbs=[...detailSection.querySelectorAll(".detail-thumb")];
+        const setSlide=(idx)=>{current=(idx+images.length)%images.length;slides.scrollTo({left:slides.clientWidth*current,behavior:"smooth"});thumbs.forEach((t,i)=>t.classList.toggle("active",i===current));const c=document.getElementById("slideCount");if(c)c.textContent=`${current+1} / ${images.length} photos · Swipe to view`;};
+        document.getElementById("slidePrev")?.addEventListener("click",()=>setSlide(current-1));document.getElementById("slideNext")?.addEventListener("click",()=>setSlide(current+1));
+        detailSection.querySelectorAll("[data-slide]").forEach(b=>b.addEventListener("click",()=>setSlide(Number(b.dataset.slide))));
+        let scrollTimer;slides.addEventListener("scroll",()=>{clearTimeout(scrollTimer);scrollTimer=setTimeout(()=>{current=Math.max(0,Math.min(images.length-1,Math.round(slides.scrollLeft/slides.clientWidth)));thumbs.forEach((t,i)=>t.classList.toggle("active",i===current));const c=document.getElementById("slideCount");if(c)c.textContent=`${current+1} / ${images.length} photos · Swipe to view`;},70);},{passive:true});
+      }
+    }
+    function routeFromHash(){const m=location.hash.match(/^#product-(\d+)$/);if(m)showProduct(Number(m[1]),false);else showListing();}
+    grid.addEventListener("click",e=>{if(e.target.closest("a.amazon"))return;const card=e.target.closest("[data-open-product]");if(card)showProduct(Number(card.dataset.openProduct));});
+    grid.addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.matches("article.card")){e.preventDefault();showProduct(Number(e.target.dataset.openProduct));}});
+    window.addEventListener("hashchange",routeFromHash);window.addEventListener("popstate",routeFromHash);
+
     document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();query=document.getElementById("searchInput").value.trim().toLowerCase();render();document.getElementById("products").scrollIntoView({behavior:"smooth"});});
     document.getElementById("searchInput").addEventListener("input",e=>{query=e.target.value.trim().toLowerCase();render();});
     document.getElementById("categories").addEventListener("click",e=>{const b=e.target.closest("button[data-category]");if(!b)return;category=b.dataset.category;document.querySelectorAll(".chip").forEach(x=>x.classList.toggle("active",x===b));render();});
@@ -172,6 +231,7 @@
     grid.addEventListener("click",e=>{const a=e.target.closest("a[data-id]");if(!a)return;const p=products.find(x=>x.id===Number(a.dataset.id));if(p.url==="https://www.amazon.in/"){e.preventDefault();const n=document.getElementById("notice");n.textContent="This is a demo product link. Add the real Amazon product URL before launch.";n.style.display="block";setTimeout(()=>n.style.display="none",4200);}});
     document.getElementById("year").textContent=new Date().getFullYear();
     render();
+    routeFromHash();
   </script>
 </body>
 </html>
