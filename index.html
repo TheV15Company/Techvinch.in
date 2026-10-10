@@ -36,7 +36,7 @@
     .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
     .card{background:#fff;border:1px solid var(--line);border-radius:17px;overflow:hidden;display:flex;flex-direction:column;min-width:0;transition:transform .15s,box-shadow .15s}
     .card:hover{transform:translateY(-2px);box-shadow:0 10px 26px #1018280d}
-    .product-art{height:155px;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#f0edff,#f8f7ff);position:relative;overflow:hidden}.product-art:before{content:"";width:84px;height:84px;border-radius:24px;background:linear-gradient(145deg,#ffffffc9,#ddd5ff88);border:1px solid #ffffffb8;box-shadow:0 12px 30px #4e36b51a;transform:rotate(-12deg)}.product-art:after{content:"";position:absolute;width:44px;height:44px;border-radius:50%;background:#8b5cf61a;right:20%;bottom:15%;}
+    .product-art{height:155px;display:flex;align-items:center;justify-content:center;background:linear-gradient(140deg,#f0edff,#f8f7ff);position:relative;overflow:hidden}.product-photo{height:220px;background:#fff;padding:8px}.product-photo img{width:100%;height:100%;object-fit:contain;display:block}.product-gallery{display:flex;gap:6px;padding:0 10px 8px;background:#fff}.product-gallery img{width:calc(25% - 5px);height:58px;object-fit:contain;border:1px solid #eaecf0;border-radius:8px;background:#fff}.product-art:not(.product-photo):before{content:"";width:84px;height:84px;border-radius:24px;background:linear-gradient(145deg,#ffffffc9,#ddd5ff88);border:1px solid #ffffffb8;box-shadow:0 12px 30px #4e36b51a;transform:rotate(-12deg)}.product-art:not(.product-photo):after{content:"";position:absolute;width:44px;height:44px;border-radius:50%;background:#8b5cf61a;right:20%;bottom:15%;}
     .tag{position:absolute;top:10px;left:10px;border-radius:999px;background:#fff;padding:5px 8px;font-size:10px;font-weight:850;color:#5b43d6}
     .card-body{padding:12px;display:flex;flex-direction:column;gap:7px;flex:1}
     .category{font-size:10px;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);font-weight:850}
@@ -50,8 +50,8 @@
     footer p{color:#98a2b3;font-size:13px;max-width:440px}footer a{font-size:13px;color:#d0d5dd;margin-right:14px}
     .mobile-nav{display:none}
     .notice{display:none;position:fixed;bottom:74px;left:12px;right:12px;background:#101828;color:#fff;padding:12px 14px;border-radius:12px;z-index:40;font-size:13px}
-    @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.head-link{display:none}.hero{grid-template-columns:1fr .55fr;padding:25px 20px}.product-art{height:135px}}
-    @media(max-width:600px){.topbar{font-size:11px}.head{padding:11px 12px;gap:9px;flex-wrap:wrap}.logo{font-size:21px}.search{order:3;flex-basis:100%}.wrap{padding:14px 12px 105px}.hero{grid-template-columns:1fr;padding:24px 19px;min-height:0;border-radius:20px}.hero-art{display:none}h1{font-size:clamp(31px,8vw,39px);letter-spacing:-.25px;line-height:1.15}.hero p{font-size:14px}.trust{margin:12px 0 22px}.section-head{align-items:start;flex-direction:column}.tools{width:100%;justify-content:space-between}.tools select{flex:1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-art{height:125px}.product-art:before{width:66px;height:66px;border-radius:19px}.product-art:after{width:34px;height:34px}.card-body{padding:10px;gap:6px}.card h3{font-size:13px}.price{font-size:14px}.amazon{font-size:11px}.mobile-nav{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:9px 8px calc(9px + env(safe-area-inset-bottom));justify-content:space-around}.mobile-nav a{font-size:11px;font-weight:800;color:#667085;text-align:center}.mobile-nav b{display:block;font-size:19px;color:var(--brand);line-height:1.3}footer{padding-bottom:100px}}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.head-link{display:none}.hero{grid-template-columns:1fr .55fr;padding:25px 20px}.product-art{height:135px}.product-photo{height:200px}}
+    @media(max-width:600px){.topbar{font-size:11px}.head{padding:11px 12px;gap:9px;flex-wrap:wrap}.logo{font-size:21px}.search{order:3;flex-basis:100%}.wrap{padding:14px 12px 105px}.hero{grid-template-columns:1fr;padding:24px 19px;min-height:0;border-radius:20px}.hero-art{display:none}h1{font-size:clamp(31px,8vw,39px);letter-spacing:-.25px;line-height:1.15}.hero p{font-size:14px}.trust{margin:12px 0 22px}.section-head{align-items:start;flex-direction:column}.tools{width:100%;justify-content:space-between}.tools select{flex:1}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.product-art{height:125px}.product-photo{height:170px}.product-gallery img{height:45px}.product-art:before{width:66px;height:66px;border-radius:19px}.product-art:after{width:34px;height:34px}.card-body{padding:10px;gap:6px}.card h3{font-size:13px}.price{font-size:14px}.amazon{font-size:11px}.mobile-nav{display:flex;position:fixed;z-index:25;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);padding:9px 8px calc(9px + env(safe-area-inset-bottom));justify-content:space-around}.mobile-nav a{font-size:11px;font-weight:800;color:#667085;text-align:center}.mobile-nav b{display:block;font-size:19px;color:var(--brand);line-height:1.3}footer{padding-bottom:100px}}
   </style>
 </head>
 <body>
@@ -126,7 +126,7 @@
       4. Do not use this starter's sample prices as live offers.
     */
     const products = [
-      {id:1,name:"Featured Amazon Product",category:"Tech",price:null,tag:"Featured pick",url:"https://link.amazon/B050Aorw5"},
+      {id:1,name:"360° Rotating Triangle Mop Wiper with Adjustable Long Handle",category:"Cleaning",price:470,tag:"Featured pick",url:"https://link.amazon/B050Aorw5",image:"assets/mop-main.jpg",gallery:["assets/mop-under-furniture.jpg","assets/mop-cleaning-cloth.jpg","assets/mop-360-rotating.jpg","assets/mop-wet-dry.jpg","assets/mop-squeeze.jpg"]},
       {id:2,name:"Compact Bluetooth Speaker",category:"Tech",price:1299,tag:"Tech pick",url:"https://www.amazon.in/"},
       {id:3,name:"Multi-Port Fast Charging Adapter",category:"Accessories",price:699,tag:"Everyday tech",url:"https://www.amazon.in/"},
       {id:4,name:"Smart LED Desk Lamp",category:"Home",price:999,tag:"Desk upgrade",url:"https://www.amazon.in/"},
@@ -152,11 +152,15 @@
       if(!list.length){grid.innerHTML='<div class="empty">No products found. Try another search or category.</div>';return;}
       grid.innerHTML = list.map(p => `
         <article class="card">
-          <div class="product-art" aria-label="${p.name} image placeholder"><span class="tag">${p.tag}</span></div>
+          <div class="product-art ${p.image ? "product-photo" : ""}" aria-label="${p.name} image">
+            ${p.image ? `<img src="${p.image}" alt="${p.name}" loading="lazy">` : ""}
+            <span class="tag">${p.tag}</span>
+          </div>
+          ${p.gallery ? `<div class="product-gallery" aria-label="${p.name} more photos">${p.gallery.slice(0,4).map(src=>`<img src="${src}" alt="${p.name} alternate view" loading="lazy">`).join("")}</div>` : ""}
           <div class="card-body">
             <div class="category">${p.category}</div>
             <h3>${p.name}</h3>
-            ${p.price ? `<div class="price">${rupees(p.price)}</div><div class="demo">Sample price — verify on Amazon</div>` : `<div class="demo">View product details on Amazon</div>`}
+            ${p.price ? `<div class="price">${rupees(p.price)}</div><div class="demo">${p.id===1 ? "Price may change on Amazon" : "Sample price — verify on Amazon"}</div>` : `<div class="demo">${p.id===1 ? "Check current price and availability on Amazon" : "View product details on Amazon"}</div>`}
             <a class="amazon" href="${p.url}" target="_blank" rel="sponsored nofollow noopener" data-id="${p.id}">View on Amazon ↗</a>
           </div>
         </article>`).join("");
